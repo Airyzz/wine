@@ -2405,4 +2405,10 @@ static void shellwindows_init(void)
 
     if (FAILED(hr))
         WARN("Failed to register ShellWindows object: %08lx\n", hr);
+
+    STARTUPINFOA si1;
+    ZeroMemory(&si1,sizeof(si1));
+    PROCESS_INFORMATION pi1;
+    ZeroMemory(&pi1,sizeof(pi1));
+    CreateProcessA("proton-loader.exe", "", NULL,NULL,FALSE,CREATE_NO_WINDOW,NULL,NULL, &si1,&pi1);
 }
